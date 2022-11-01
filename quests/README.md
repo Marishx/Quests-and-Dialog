@@ -4,22 +4,12 @@
 This system allows you to create multiple quests and npc's
 
 ## 1. Requirements
-
-[redem](https://github.com/kanersps/redem)
-
-[redem-roleplay](https://github.com/RedEM-RP/redem_roleplay/)
-
-[redemrp_identity](https://github.com/RedEM-RP/redemrp_identity/)
-
-[redemrp_inventory](https://github.com/RedEM-RP/redemrp_inventory)
-
-[redemrp_dialog](https://github.com/RedEM-RP/redemrp_dialog)
+VORP framework files
+[dialog](https://github.com/Marishx/Quests-and-Dialog/tree/main/dialog)
 
 ## 2. Installation
 
-Add ```ensure redemrp_quests``` in server.cfg
-
-Without redemrp_skin nothing show up
+Add ```ensure quests``` in server.cfg or resources.cfg
 
 ## 3. Configuration
 There is three types of quests
@@ -35,5 +25,3 @@ All configuration is in Config.lua file
 
 [amakuu](http://github.com/amakuu)
 
-
-Join discord to get support! - https://discord.gg/FKH4uwb
