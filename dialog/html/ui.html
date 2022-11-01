@@ -1,0 +1,74 @@
+<html>
+  <head>
+    <title>Dialog</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="nui://game/ui/jquery.js" type="text/javascript"></script>
+    <script>
+      $(function () {
+        let body = document.getElementById("body");
+        let dialog = document.getElementById("dialog");
+        let title = document.getElementById("title");
+        let subtitle = document.getElementById("subtitle");
+        let options = document.getElementById("options");
+        options.innerHTML = "";
+        $("#body").css("display", "none");
+        $("#dialog").css("display", "none");
+        $(document).keyup(function (e) {
+          if (e.keyCode == 27) {
+            $("#body").css("display", "none");
+            $("#dialog").css("display", "none");
+            $.post("http://dialog/close", JSON.stringify({}));
+            options.innerHTML = "";
+          }
+        });
+        window.addEventListener("message", function (event) {
+          if (event.data.type == "showdialog") {
+            options.innerHTML = "";
+            let item = event.data;
+            $("#body").fadeIn(1500);
+            console.log("Opening NUI....");
+            body.style.display = "block";
+            dialog.style.display = "block";
+            title.innerHTML = item.title;
+            subtitle.innerHTML = item.subtitle;
+
+            for (i = 0; i < item.options.length; i++) {
+              options.innerHTML +=
+                "<div class='option' onclick='Choice(`" +
+                item.id +
+                "`, `" +
+                i +
+                "`)'>" +
+                item.options[i].name +
+                "</div>";
+            }
+          }
+        });
+      });
+      function Choice(DialogId, OptionId) {
+        console.log(DialogId);
+        console.log(OptionId);
+        $("#body").css("display", "none");
+        $("#dialog").css("display", "none");
+        $.post(
+          "http://dialog/choice",
+          JSON.stringify({ dialogid: DialogId, optionid: OptionId })
+        );
+        options.innerHTML = "";
+      }
+    </script>
+  </head>
+
+  <body id="body">
+    <div id="dialog">
+      <div id="titles">
+        <div id="title"></div>
+        <div id="subtitle"></div>
+      </div>
+      <div id="OptionsBox">
+        <div id="options"></div>
+      </div>
+    </div>
+  </body>
+</html>
