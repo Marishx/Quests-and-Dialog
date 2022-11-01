@@ -101,30 +101,11 @@ AddEventHandler('quests:StartQuest', function(var1, var2, var3, var4, var5)
         Debug("ITEM QUEST")
 		StartMissionType1(savedCoords, var2, var3, var4, var5)
     elseif var1 == 2 then
-        Debug("KILL QUEST") --Kill quests doesn't require you to bring an item back
+        Debug("KILL QUEST")
 		StartMissionType2(savedCoords, var2, var3, var4, var5)
     elseif var1 == 3 then
-        Debug("SKIN QUEST") --Requires you to kill something and then bring back the skin of it
+        Debug("SKIN QUEST")
 		StartMissionType3(savedCoords, var2, var3, var4, var5)
-    elseif var1 == 4 then
-        Debug("TRANSPORT QUEST") --Will start transports.. hopefully
-		exports.vorp_transports:startRoute()
-    elseif var1 == 5 then
-        Debug("RAIDv1") --Will start raid.. hopefully
-        print("raiding")
-		TriggerServerEvent("questTogray",1)
-    elseif var1 == 6 then
-        Debug("RAIDv2") --Will start raid.. hopefully
-        print("raiding")
-		TriggerServerEvent("questTogray",2)
-    elseif var1 == 7 then
-        Debug("RAIDv3") --Will start raid.. hopefully
-        print("raiding")
-		TriggerServerEvent("questTogray",3)
-    elseif var1 == 8 then
-        Debug("Postal") --Will start raid.. hopefully
-        print("Starting post job")
-		TriggerEvent("questwatch:StartPostal",3)
     else
         Debug("INCORRECT TYPE OF QUEST")
     end
