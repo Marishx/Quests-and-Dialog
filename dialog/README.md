@@ -1,13 +1,11 @@
 # Added by Marish - was edited to work with VORP
 
 # redemrp_dialog
- a Fallout 4 like dialog/quest system for RedEM:RP
+ a Fallout 4 like dialog/quest system originally made for RedEM:RP, converted to VORP
 
 ## 1. Installation
-- Be sure you have RedEM and RedEM:RP Installed
-if not --> [RedEM](https://github.com/kanersps/redem) --> [RedEM:RP](https://github.com/RedEM-RP/redem_roleplay)
-- Clone redem_dialog into [redemrp] folder
-- add ```ensure redemrp_dialog``` after ```ensure redem_roleplay```
+- make sure you have the required vorp framework files.
+- add ```ensure dialog``` after ```ensure roleplay``` to either your server.cfg or resources.cfg
 
 ## 2. Usage
 - Use 'Config.Debug' to enable following commands and prints.
@@ -19,9 +17,9 @@ if not --> [RedEM](https://github.com/kanersps/redem) --> [RedEM:RP](https://git
 - Use following example in server-side to create a dialog menu
 
 ```
-TriggerEvent("redemrp_dialog:createDialog", ID, "TITLE", "SUBTITLE/CONTEXT",
+TriggerEvent("dialog:createDialog", ID, "TITLE", "SUBTITLE/CONTEXT",
     {
-        {name = "OPTION 1", func = function(source) TriggerEvent('redemrp_dialog:openDialog', ID , source) end}, -- OPENS NEXT DIALOG
+        {name = "OPTION 1", func = function(source) TriggerEvent('dialog:openDialog', ID , source) end}, -- OPENS NEXT DIALOG
         {name = "OPTION 2", func = function() print("SELECTED 2") end}, -- PRINTING 2 IN CONSOLE
         {name = "OPTION 3", func = function() end, focusOFF = true} -- CLOSES AND UNFOCUSING MENU
     }
@@ -32,11 +30,10 @@ TriggerEvent("redemrp_dialog:createDialog", ID, "TITLE", "SUBTITLE/CONTEXT",
 - Use following example in client-side to open a dialog menu
 
 ```
-TriggerServerEvent("redemrp_dialog:openDialog", ID)
+TriggerServerEvent("dialog:openDialog", ID)
 ```
 
 - There is also example provided in sv_quest.lua and cl_quest.lua, use **Config.ExampleQuest = true** to enable the example quest(It's enabled by default).
-- For any support join our discord - https://discord.gg/FKH4uwb
 
 ## 5. Credits
 https://github.com/amakuu/ <br/>
